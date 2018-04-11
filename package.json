@@ -1,0 +1,10 @@
+{
+  "name": "searchzoom",
+  "version": "1.0.0",
+  "description": "blah",
+  "author": "Feli",
+  "license": "MIT",
+  "dependencies": {
+    "webextension-polyfill": "^0.2.1"
+  }
+}

@@ -1,0 +1,27 @@
+{
+
+  "manifest_version": 2,
+  "name": "Newsearch",
+  "version": "0.1",
+  "description": "Adds buttons to look for related news in google",
+
+  "icons": {
+    "18": "icons/lupa_18dp.png",
+    "24": "icons/lupa_24dp.png",
+    "36": "icons/lupa_36dp.png",
+    "48": "icons/lupa_48dp.png"
+  },
+
+  "background":
+    {
+      "js":["background/background.js"]
+    },
+
+  "content_scripts":[
+    {
+      "matches": ["https://*.wikipedia.org/wiki/*"],
+      "js": ["content-script.js"],
+      "css": ["popup-style.css"]
+    }
+	]
+}
