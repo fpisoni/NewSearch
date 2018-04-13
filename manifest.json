@@ -2,8 +2,8 @@
 
   "manifest_version": 2,
   "name": "Newsearch",
-  "version": "0.1",
-  "description": "Adds buttons to look for related news in google",
+  "version": "0.5",
+  "description": "Adds buttons to look for related news in diarioregistrado",
 
   "icons": {
     "18": "icons/lupa_18dp.png",
@@ -12,16 +12,20 @@
     "48": "icons/lupa_48dp.png"
   },
 
-  "background":
-    {
-      "js":["background/background.js"]
+  "permissions": [
+  	"<all_urls>",
+  	"webRequest"
+  ],
+
+  "background": {
+      "scripts":["background/background-script.js"]
     },
 
   "content_scripts":[
     {
       "matches": ["https://*.wikipedia.org/wiki/*"],
-      "js": ["content-script.js"],
-      "css": ["popup-style.css"]
+      "js": ["content_script/content-script.js"],
+      "css": ["style/popup-style.css"]
     }
 	]
 }

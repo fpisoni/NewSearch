@@ -1,4 +1,4 @@
-#popup_zoom{
+#popup_srch{
 	display: none;
 	position: fixed;
 	z-index: 1;
@@ -11,16 +11,11 @@
  	padding-top: 100px;
 }
 
-#innerImg_zoom{
-	display: block;
-	margin: auto;
-	width: 40%;
-	height: 40%;
-	animation-name: zoom;
-	animation-duration: 0.5s;
+#innerNew_srch{
+	left:15px;
 }
 
-#close_zoom{
+#close_srch{
 	position: absolute;
 	color: rgb(15,15,15);
 	font-size: 40px;
@@ -29,16 +24,16 @@
 	right:35px;
 }
 
-#close_zoom:hover{
+#close_srch:hover{
 	cursor: pointer;
 }
 
-.relatedImg_zoom{
+.relatedImg_srch{
 	padding: 50px
 	max-width: 400px;
 	max-height: 400px;
 }
 
-.rltdText_zoom {
-	
+.rltdText_srch {
+	left:15px;
 }

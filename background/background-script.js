@@ -1,4 +1,4 @@
-browser.runtime.onMessage.addEventListener(function (message, sender, sendResponse){
+function handleMessage(message, sender, sendResponse){
 	console.log("message: ", message, "at: (content-script.js)");
 	return new Promise ((resolve,reject) => {
 		var req = new XMLHttpRequest();
@@ -7,18 +7,19 @@ browser.runtime.onMessage.addEventListener(function (message, sender, sendRespon
 		req.addEventListener("error",fail);
 		req.addEventListener("abort",aborted);
 		var ans = req.open("GET",url);
-
 		function completed(e){
 			console.log("Succesfully recieved response.");
 			var news = this.parseResponse(ans);
+			console.log("check1.background");
+			console.log(news);
 			resolve(news);
 		}
 
 		function parseResponse(ans){
 			var parser = new DOMParser;
-			var doc = parser.parseFromString(ans,);
-			var news = doc.getElementsByClassName("col-md-8");
-			return Array.from(news).filter(noti => (noti.indexOf)%2==0)
+			var doc = parser.parseFromString(ans,"application/xml");
+			var noti = Array.from(doc.getElementsByClassName("hover-overlay-container navbar-color"));
+			return noti.slice(0,6);
 		}
 
 		function fail(e){
@@ -31,4 +32,6 @@ browser.runtime.onMessage.addEventListener(function (message, sender, sendRespon
 			reject();
 		}
 	})
-});
+};
+
+browser.runtime.onMessage.addListener(handleMessage);
