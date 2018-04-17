@@ -26,7 +26,7 @@ class PopupHandler{
 	//methods
 	relatedTitlesSearch(noti){
 	browser.runtime.sendMessage({
-		message: noti.firstChild.data
+		"search": noti.firstChild.data
 	}).then(response =>{
 		if (response) {
 			response.forEach(function(news){
@@ -54,7 +54,12 @@ class PopupHandler{
 	showDiv(noti){
 		var innerNew = document.createElement("h3");
 		innerNew.setAttribute("id","innerNew_srch");
-		innerNew.innerHTML=noti.firstChild.data;
+		var title = noti.firstChild;
+		if (title.data){
+			innerNew.innerHTML= title.data;
+		}else{
+			innerNew.innerHTML= title.firstChild.data;
+		}
 		this.container.appendChild(innerNew);
 		//this.container.appendChild(noti.firstChild.data);
 		this.addChilds();
