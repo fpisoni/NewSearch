@@ -2,34 +2,39 @@ function handleMessage(message, sender, sendResponse){
 	console.log("message: ", message, "at: (content-script.js)");
 	return new Promise ((resolve,reject) => {
 		var req = new XMLHttpRequest();
-		var url = "https://www.diarioregistrado/buscar?q="+message.search;
-		console.log(url);
+		var url = "https://www.diarioregistrado.com/buscar?q="+message.search;
 		req.addEventListener("load",completed);
 		req.addEventListener("error",fail);
 		req.addEventListener("abort",aborted);
 		req.open("GET",url);
 		req.send();
 
-
-
-
 		function completed(e){
 			console.log("ans: ",this.responseText);
 			console.log("Succesfully recieved response.");
-			var news = this.parseResponse(ans);
-			console.log("check1.background");
+			var news = parseResponse(this.responseText);
 			console.log(news);
 			resolve(news);
 		}
 
 		function parseResponse(ans){
-			var parser = new DOMParser;
-			console.log(parser);
-			var doc = parser.parseFromString(ans,"application/xml");
-			console.log(doc.querySelector("body"));
-			var noti = Array.from(doc.getElementsByClassName("hover-overlay-container navbar-color"));
-			console.log(noti);
-			return noti.slice(0,6);
+			var parser = new DOMParser();
+			var doc = parser.parseFromString(ans,"text/html");
+			return retrieveNews(doc).slice(0,5);
+		}
+
+		function retrieveNews(doc){
+			let news = doc.getElementsByClassName("title");
+			let ar = [];
+			let not;
+			Array.from(news).forEach(i=>{
+				not=i.parentNode.cloneNode(true);
+				not.href="https://diarioregistrado.com/"+not.href;
+				console.log(not);
+				ar.push(not);
+			});			
+			console.log(ar);
+			return ar;
 		}
 
 		function fail(e){

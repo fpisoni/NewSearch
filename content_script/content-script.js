@@ -25,19 +25,15 @@ class PopupHandler{
 
 	//methods
 	relatedTitlesSearch(noti){
-	browser.runtime.sendMessage({
+		browser.runtime.sendMessage({
 		"search": noti.firstChild.data
-	}).then(response =>{
-		if (response) {
-			response.forEach(function(news){
+		}).then(function (response){
+			let res = JSON.parse(response);
+			console.log(res);
+			res.forEach(function(news){
 				news.setAttribute("class","relatedNew_srch");
 				this.container.appendChild(news);
 			})
-		} else{
-			var txt = document.createTextNode("No related news were found.");
-			txt.setAttribute("class, failureText_srch");
-			this.container.appendChild();
-		}
 		})
 	}
 
