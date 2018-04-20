@@ -26,15 +26,20 @@ class PopupHandler{
 	//methods
 	relatedTitlesSearch(noti){
 		browser.runtime.sendMessage({
-		"search": noti.firstChild.data
-		}).then(function (response){
-			let res = JSON.parse(response);
-			console.log(res);
-			res.forEach(function(news){
-				news.setAttribute("class","relatedNew_srch");
-				this.container.appendChild(news);
-			})
-		})
+			"search": noti.firstChild.data
+		}).then(response =>{
+			let tempContainer;
+			response.forEach(news =>{
+				console.log(news.title);
+				console.log(news.link);
+				tempContainer = document.createElement("a");
+				tempContainer.setAttribute("href",news.link);
+				tempContainer.appendChild(document.createTextNode(news.title));
+				tempContainer.appendChild(document.createElement("br"));
+				tempContainer.setAttribute("class","relatedNew_srch");
+				this.container.appendChild(tempContainer);
+			});
+	});
 	}
 
 	addChilds(){
@@ -57,11 +62,11 @@ class PopupHandler{
 			innerNew.innerHTML= title.firstChild.data;
 		}
 		this.container.appendChild(innerNew);
-		//this.container.appendChild(noti.firstChild.data);
 		this.addChilds();
 		this.relatedTitlesSearch(noti);
 		this.container.style.display = "block";
 	}
+
 
 	reduce (){
 		this.container.style.display="none";

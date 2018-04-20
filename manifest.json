@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "Newsearch",
-  "version": "1.4",
+  "version": "1.0",
   "description": "Adds buttons to look for related news in diarioregistrado",
 
   "icons": {

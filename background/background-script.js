@@ -10,7 +10,6 @@ function handleMessage(message, sender, sendResponse){
 		req.send();
 
 		function completed(e){
-			console.log("ans: ",this.responseText);
 			console.log("Succesfully recieved response.");
 			var news = parseResponse(this.responseText);
 			console.log(news);
@@ -20,21 +19,22 @@ function handleMessage(message, sender, sendResponse){
 		function parseResponse(ans){
 			var parser = new DOMParser();
 			var doc = parser.parseFromString(ans,"text/html");
-			return retrieveNews(doc).slice(0,5);
+			let news = [];
+			let not;
+			Array.from(doc.getElementsByClassName("title")).forEach(i =>{
+				not = retrieveNews(i);
+				news.push(not);
+			});
+			return news;
 		}
 
-		function retrieveNews(doc){
-			let news = doc.getElementsByClassName("title");
-			let ar = [];
-			let not;
-			Array.from(news).forEach(i=>{
-				not=i.parentNode.cloneNode(true);
-				not.href="https://diarioregistrado.com/"+not.href;
-				console.log(not);
-				ar.push(not);
-			});			
-			console.log(ar);
-			return ar;
+		function retrieveNews(noti){
+			let link = noti.parentNode.href.replace("moz-extension://42d07d34-4874-4cbd-8e98-fedf950a3e97","https://www.diarioregistrado.com");
+			let noticia = {
+				title: noti.firstChild.data,
+				link: link
+			}
+			return noticia;
 		}
 
 		function fail(e){
