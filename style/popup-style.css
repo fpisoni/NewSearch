@@ -37,10 +37,14 @@
 .rltdText_srch {
 	left:15px;
 }
+
 .rltdNew_srch {
 	left:15px;
 	position: inline;
 	font-size: 20px;
 	text-align: left;
+}
 
+.button_srch {
+	margin-left: 15px;
 }

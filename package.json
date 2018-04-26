@@ -1,7 +1,7 @@
 {
-  "name": "searchzoom",
+  "name": "NewSearch",
   "version": "1.0.0",
-  "description": "blah",
+  "description": "Searchs titles from Wikipedia and gets news related to them from Diarioregistrado.com",
   "author": "Feli",
   "license": "MIT",
   "dependencies": {

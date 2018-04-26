@@ -18,13 +18,20 @@
   ],
 
   "background": {
-      "scripts":["background/background-script.js"]
+      "scripts":[
+      		"node_modules/webextension-polyfill/dist/browser-polyfill.js",
+      		"background/background-script.js"
+      	]
     },
 
   "content_scripts":[
     {
       "matches": ["https://*.wikipedia.org/wiki/*"],
-      "js": ["content_script/content-script.js"],
+      "js": [
+      		"node_modules/webextension-polyfill/dist/browser-polyfill.js",
+      		"content_script/PopupHandler.js",
+      		"content_script/content-script.js"
+      		],
       "css": ["style/popup-style.css"]
     }
 	]
