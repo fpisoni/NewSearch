@@ -39,7 +39,7 @@ npm install
 3. Click "Load not packaged extension".
 4. Select any file in your add-on's root directory (NewSearch).
 
-##Usage##
+###Usage###
 
 
 When the extension it's loaded, simply go to an article at Wikipedia and press the "Search" button right next to the title of it. That'll create a modal with links below to DiarioRegistrado.
