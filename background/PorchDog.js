@@ -36,10 +36,16 @@ class PorchDog{
 				var doc = parser.parseFromString(ans,"text/html");
 				let news = [];
 				let not;
-				Array.from(doc.getElementsByClassName("title")).forEach(i =>{
-					not = this.retrieveNews(i);
-					news.push(not);
-				});
+				let titles = doc.getElementsByClassName("title");
+				if (titles.length == 0){
+					news = null;
+				} 
+				else {
+					Array.from(titles).forEach(i =>{
+						not = this.retrieveNews(i);
+						news.push(not);
+					});
+				}
 				return news;
 			}
 
