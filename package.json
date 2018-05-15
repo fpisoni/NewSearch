@@ -1,10 +1,14 @@
 {
   "name": "NewSearch",
   "version": "1.0.0",
-  "description": "Searchs titles from Wikipedia and gets news related to them from Diarioregistrado.com",
+  "description": "Searchs titles from Wikipedia and gets news related to them from www.diarioregistrado.com",
   "author": "Feli",
   "license": "MIT",
   "dependencies": {
+    "object.entries": "^1.0.4",
     "webextension-polyfill": "^0.2.1"
+  },
+  "devDependencies": {
+    "karma": "^2.0.2"
   }
 }

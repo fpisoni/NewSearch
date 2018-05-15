@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "Newsearch",
   "version": "1.0",
-  "description": "Adds buttons to look for related news in diarioregistrado",
+  "description": "Adds buttons to look for related news in www.diarioregistrado.com",
 
   "icons": {
     "18": "icons/lupa_18dp.png",
