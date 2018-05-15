@@ -79,8 +79,7 @@ class PopupHandler{
 		document.getElementById("innerNew_srch").remove();
 		document.getElementsByClassName("breakbar_srch")[0].remove();
 		document.getElementsByClassName("rltdText_srch")[0].remove();
-		var news = document.getElementsByClassName("relatedNew_srch");
-		if (news){
+		if (news = document.getElementsByClassName("relatedNew_srch")){
 			Array.from(news).forEach(function(noti){
 				noti.remove();
 			})
